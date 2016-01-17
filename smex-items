@@ -1,0 +1,20 @@
+
+;; ----- smex-history -----
+(
+ syntax-subword-mode
+ package-list-packages
+ 2048-game
+ auto-complete-mode
+ mc/edit-lines
+ cd
+ 5x5
+)
+
+;; ----- smex-data -----
+(
+ (mc/edit-lines . 2)
+ (package-list-packages . 3)
+ (auto-complete-mode . 4)
+ (syntax-subword-mode . 2)
+ (2048-game . 1)
+)

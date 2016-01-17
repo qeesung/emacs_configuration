@@ -15,12 +15,12 @@
  '(ede-project-directories (quote ("c:/Users/Administrator/Desktop/testEde")))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
-(custom-set-faces
+;; (custom-set-faces			  
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Monaco" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
+; '(default ((t (:family "Monaco" :foundry "outline" :slant normal :weight normal :height 120 :width normal))))) 
 
 ;; set the line number
 (global-linum-mode t)
@@ -51,7 +51,7 @@
 (put 'upcase-region 'disabled nil)
 
 ;; set the default font 
-(set-default-font "Monaco-12")
+(set-default-font "Consolas-14")
 (set-fontset-font "fontset-default"  
                   'gb18030' ("Î¢ÈíÑÅºÚ" . "unicode-bmp"))
 
@@ -90,3 +90,85 @@
 (setq molokai-theme-kit t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/molokai-theme")
 (load-theme 'molokai)
+
+
+;; change the way that emacs move over a word
+(load-file "~/.emacs.d/lisp/syntax-subword.el")
+(global-syntax-subword-mode 1)
+
+;; load the yasnippet
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;;; auto complete mod
+;;; should be loaded after yasnippet so that they can work together
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+
+;;; set the trigger key so that it can work together with yasnippet on tab key,
+;;; if the word exists in yasnippet, pressing tab will cause yasnippet to
+;;; activate, otherwise, auto-complete will
+(ac-set-trigger-key "TAB")
+(ac-set-trigger-key "<tab>")
+
+(setq ac-source-yasnippet nil)
+
+(require 'package) 
+(setq package-archives 
+      '(("gnu" . "http://elpa.gnu.org/packages/") 
+        ("melpa" . "http://melpa.org/packages/"))) 
+(package-initialize) 
+
+
+;; install the multiple-cursors
+(require 'multiple-cursors)
+
+;; config the multiple-cursors
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;; enable the smex
+(require 'smex) ; Not needed if you use package.el
+(smex-initialize) ; Can be omitted. This might cause a (minimal) delay
+										; when Smex is auto-initialized on its first run.
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+
+;; enable helm package
+(require 'helm-config)
+(helm-mode 1)
+
+
+;;
+;; ace jump mode major function
+;; 
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+;; you can select the key you prefer to
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+
+
+;; 
+;; enable a more powerful jump back function from ace jump mode
+;;
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back:-)"
+  t)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
