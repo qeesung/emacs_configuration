@@ -1,0 +1,264 @@
+;; Object Desktop/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "Desktop/"
+  :tables
+  (list
+    (semanticdb-table "world.java"
+      :major-mode 'java-mode
+      :tags 
+        '( ("world" type
+               (:members 
+                  ( ("main" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("args" variable
+                               (:dereference 1
+                                :type "String")
+                                (reparse-symbol formal_parameters) [40 53]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [16 61]))                  
+                :type "class")
+                nil [1 63])
+            ("world" type
+               (:members 
+                  ( ("main" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("args" variable
+                               (:dereference 1
+                                :type "String")
+                                (reparse-symbol formal_parameters) [104 117]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [80 127]))                  
+                :type "class")
+                nil [65 129])
+            ("world" type
+               (:members 
+                  ( ("main" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("args" variable
+                               (:dereference 1
+                                :type "String")
+                                (reparse-symbol formal_parameters) [171 184]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [147 194]))                  
+                :type "class")
+                nil [132 196]))          
+      :file "world.java"
+      :pointmax 197
+      :fsize 220
+      :lastmodtime '(22171 42378 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "hello.java"
+      :major-mode 'java-mode
+      :tags 
+        '( ("Hello" type
+               (:members 
+                  ( ("Hello" function
+                       (:constructor-flag t
+                        :typemodifiers ("public"))
+                        (reparse-symbol class_member_declaration) [58 318])
+                    ("main" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("args" variable
+                               (:dereference 1
+                                :type "String")
+                                (reparse-symbol formal_parameters) [424 437]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [400 502]))                  
+                :type "class")
+                nil [43 504]))          
+      :file "hello.java"
+      :pointmax 505
+      :fsize 530
+      :lastmodtime '(22171 46360 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "hello world.java"
+      :major-mode 'java-mode
+      :tags nil
+      :file "hello world.java"
+      :pointmax 72
+      :fsize 78
+      :lastmodtime '(22171 46363 0 0)
+      :unmatched-syntax '((BRACE_BLOCK 19 . 71) (IDENTIFIER 13 . 18)))
+    (semanticdb-table "motorola.java"
+      :major-mode 'java-mode
+      :tags 
+        '( ("Motorola" type
+               (:members 
+                  ( ("main" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("args" variable
+                               (:dereference 1
+                                :type "String")
+                                (reparse-symbol formal_parameters) [42 55]))                          
+                        :type "int")
+                        (reparse-symbol class_member_declaration) [19 64]))                  
+                :type "class")
+                nil [1 66]))          
+      :file "motorola.java"
+      :pointmax 67
+      :fsize 71
+      :lastmodtime '(22171 46364 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "world3.java"
+      :major-mode 'java-mode
+      :tags 
+        '( ("World3" type (:type "class") nil [1 19]))          
+      :file "world3.java"
+      :pointmax 20
+      :fsize 22
+      :lastmodtime '(22171 27909 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "world2.java"
+      :major-mode 'java-mode
+      :tags 
+        '( ("World2" type (:type "class") nil [1 19]))          
+      :file "world2.java"
+      :pointmax 20
+      :fsize 22
+      :lastmodtime '(22171 27896 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "hello.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("hello.h" include nil nil [1 19])
+            ("string.h" include (:system-flag t) nil [20 39])
+            ("stdio.h" include (:system-flag t) nil [40 58])
+            ("hello" function (:type "void") nil [60 111]))          
+      :file "hello.c"
+      :pointmax 143
+      :fsize 155
+      :lastmodtime '(22171 44710 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "hello.html"
+      :major-mode 'html-mode
+      :tags 
+        '( ("hello" section nil nil [225 3050])
+            ("/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = \"code-highlighted\";
+     elem.className   = \"code-highlighted\";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->" section nil nil [3050 4669])
+            ("hello" section (:members 
+              ( ("hello" section (:members 
+                  ( ("Table of Contents" section (:members 
+                      ( ("1. org-mode" anchor nil nil [4823 4826])
+                        ("1.1. 大纲" anchor nil nil [4865 4868])
+                        ("1.2. 轻量级标记语言" anchor nil nil [4905 4908])
+                        ("2. 可以导出其他格式" anchor nil nil [4962 4965])
+                        ("2.1. this is a sub title" anchor nil nil [5004 5007]))                      ) nil [4753 5142])
+                    ("1" section (:members 
+                      ( ("1.1" section nil nil [5313 5508])
+                        ("1.2" section nil nil [5508 5728]))                      ) nil [5142 5728])
+                    ("2" section (:members 
+                      ( ("2.1" section (:members 
+                          ( ("Emacs" anchor nil nil [6638 6641])
+                            ("Org" anchor nil nil [6701 6704])
+                            ("Validate" anchor nil nil [6777 6780]))                          ) nil [5899 6869]))                      ) nil [5728 6869]))                  ) nil [4695 6869]))              ) nil [4669 6869]))          
+      :file "hello.html"
+      :pointmax 6869
+      :fsize 7189
+      :lastmodtime '(22170 28819 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "hello.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("HELLO_H" variable (:constant-flag t) nil [25 32])
+            ("hello" function
+               (:prototype-flag t
+                :type "void")
+                nil [34 47]))          
+      :file "hello.h"
+      :pointmax 70
+      :fsize 75
+      :lastmodtime '(22171 46361 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("HELLO_H")
+          )
+)
+    (semanticdb-table "main.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("hello.h" include nil nil [1 19])
+            ("stdio.h" include (:system-flag t) nil [20 38])
+            ("Person" type
+               (:members 
+                  ( ("age" variable (:type ("Integer" type (:type "class") nil nil)) (reparse-symbol classsubparts) [60 72])
+                    ("name" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [74 88]))                  
+                :type "struct")
+                nil [40 91])
+            ("global_var" variable
+               (:typemodifiers ("static")
+                :default-value "100"
+                :type ("Integer" type (:type "class") nil nil))
+                nil [93 125])
+            ("hello" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :type "void")
+                nil [126 146])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type ("Integer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [163 176])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [177 190]))                  
+                :type ("Integer" type (:type "class") nil nil))
+                nil [150 221]))          
+      :file "main.c"
+      :pointmax 223
+      :fsize 242
+      :lastmodtime '(22171 46360 0 0)
+      :unmatched-syntax nil))
+  :file "!drive_c!Users!qeesung!Desktop!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

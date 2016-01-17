@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ eval-region
+ helm-mini
+ helm-buffers-list
+ eval-buffer
+ ace-jump-word-mode
  syntax-subword-mode
  package-list-packages
- 2048-game
- auto-complete-mode
- mc/edit-lines
- cd
- 5x5
 )
 
 ;; ----- smex-data -----
@@ -17,4 +17,9 @@
  (auto-complete-mode . 4)
  (syntax-subword-mode . 2)
  (2048-game . 1)
+ (eval-buffer . 2)
+ (ace-jump-word-mode . 1)
+ (helm-buffers-list . 7)
+ (helm-mini . 4)
+ (eval-region . 2)
 )
