@@ -9,10 +9,11 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(custom-safe-themes
    (quote
-	("25ed1d587f51389966b4bbe883b257a2f35289eb2791dcfc74624f8ee7804ad9" "c3c0a3702e1d6c0373a0f6a557788dfd49ec9e66e753fb24493579859c8e95ab" default)))
+	("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "b04425cc726711a6c91e8ebc20cf5a3927160681941e06bc7900a5a5bfe1a77f" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "25ed1d587f51389966b4bbe883b257a2f35289eb2791dcfc74624f8ee7804ad9" "c3c0a3702e1d6c0373a0f6a557788dfd49ec9e66e753fb24493579859c8e95ab" default)))
  '(display-battery-mode t)
  '(display-time-mode t)
  '(ede-project-directories (quote ("c:/Users/Administrator/Desktop/testEde")))
+ '(electric-pair-mode t)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 ;; (custom-set-faces			  
@@ -50,23 +51,27 @@
 (global-set-key (kbd "C-<return>") 'newline)
 (put 'upcase-region 'disabled nil)
 
-;; set the default font 
-(set-default-font "Consolas-14")
-(set-fontset-font "fontset-default"  
-                  'gb18030' ("Î¢ÈíÑÅºÚ" . "unicode-bmp"))
+;; set the default font
+(set-default-font "Consolas-12")
+
+(set-fontset-font "fontset-default"  					 
+                  'gb18030' ("å¾®è½¯é›…é»‘" . "unicode-bmp"))
+(setq face-font-rescale-alist '(("å¾®è½¯é›…é»‘" . 1.15) ("Microsoft Yahei" . 1.2) ("WenQuanYi Zen Hei" . 1.2)))
+
+
 
 ;; setting of auto complete
 (add-to-list 'load-path "~/.emacs.d/lisp/auto-complete-1.3.1/")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete-1.3.1//ac-dict")
 (ac-config-default)
-(setq ac-auto-start 1) ;; ÊäÈë1¸ö×Ö·û²Å¿ªÊ¼²¹È«
-(global-set-key "\M-/" 'auto-complete)  ;; ²¹È«µÄ¿ì½İ¼ü£¬ÓÃÓÚĞèÒªÌáÇ°²¹È«
-;; Ñ¡Ôñ²Ëµ¥ÏîµÄ¿ì½İ¼ü
+(setq ac-auto-start 1) ;; è¾“å…¥1ä¸ªå­—ç¬¦æ‰å¼€å§‹è¡¥å…¨
+(global-set-key "\M-/" 'auto-complete)  ;; è¡¥å…¨çš„å¿«æ·é”®ï¼Œç”¨äºéœ€è¦æå‰è¡¥å…¨
+;; é€‰æ‹©èœå•é¡¹çš„å¿«æ·é”®
 (setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
-;; menuÉèÖÃÎª12 lines
+;; menuè®¾ç½®ä¸º12 lines
 (setq ac-menu-height 12)
 
  ;; open the cedet plugin
@@ -87,9 +92,10 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; set the emacs theme
-(setq molokai-theme-kit t)
+;(setq molokai-theme-kit t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/molokai-theme")
-(load-theme 'molokai)
+										;(load-theme 'molokai)
+
 
 
 ;; change the way that emacs move over a word
@@ -111,8 +117,8 @@
 ;;; set the trigger key so that it can work together with yasnippet on tab key,
 ;;; if the word exists in yasnippet, pressing tab will cause yasnippet to
 ;;; activate, otherwise, auto-complete will
-(ac-set-trigger-key "TAB")
-(ac-set-trigger-key "<tab>")
+;(ac-set-trigger-key "TAB")
+;(ac-set-trigger-key "<tab>")
 
 (setq ac-source-yasnippet nil)
 
@@ -152,7 +158,9 @@
   "Emacs quick move minor mode"
   t)
 ;; you can select the key you prefer to
+;(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(define-key global-map (kbd "C-c l") 'ace-jump-line-mode)
 
 ;; 
 ;; enable a more powerful jump back function from ace jump mode
@@ -203,3 +211,116 @@
         helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
 (global-set-key (kbd "C-c h o") 'helm-occur)
 (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+
+;; select a line quickly
+
+;; select a line quickly
+(transient-mark-mode 1)
+
+(defun select-current-line ()
+  "Select the current line"
+  (interactive)
+  (end-of-line) ; move to end of line
+  (set-mark (line-beginning-position)))
+
+(global-set-key (kbd "C-;") 'select-current-line)
+
+;; deal the problem that yassnippets and tab
+;; Remove Yasnippet's default tab key binding
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+
+
+;; Set Yasnippet's key binding to shift+tab					 
+(define-key yas-minor-mode-map (kbd "<backtab>") 'yas-expand) 
+;; Alternatively use Control-c + tab							 
+(define-key yas-minor-mode-map (kbd "\C-c TAB") 'yas-expand)
+
+
+;; define my own find and grep exe file in windows
+(setq find-program "\"C:/cygwin64/bin/find.exe\"")
+(setq grep-program "\"C:/cygwin64/bin/grep.exe\"")
+
+;; set the proxy for package control
+(setq url-proxy-services
+   '(("no_proxy" . "^\\(localhost\\|10.*\\)")
+     ("http" . "10.70.13.66:3128")
+     ("https" . "10.70.13.66:3128")))
+
+
+;; bind the C-x o to ace window
+(global-set-key (kbd "C-x o") 'ace-window)
+
+
+;; load the ace jump plugins in shell mode
+(defun my-shell-hook ()
+  (define-key shell-mode-map (kbd "C-c SPC") 'ace-jump-mode))
+
+(add-hook 'shell-mode-hook 'my-shell-hook)
+
+;; add the support for the emacs powerline
+;(require 'powerline)
+;(powerline-default-theme)
+
+;(sml/setup)
+;(setq sml/theme 'dark)
+;(custom-set-faces
+; ;; custom-set-faces was added by Custom.
+; ;; If you edit it by hand, you could mess it up, so be careful.
+; ;; Your init file should contain only one such instance.
+; ;; If there is more than one, they won't work right.
+; )
+
+
+;; config the default js mode to js2-mode
+(add-to-list 'auto-mode-alist (cons (rx ".js" eos) 'js2-mode))
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+(add-hook 'js2-mode-hook 'skewer-mode)
+(add-hook 'css-mode-hook 'skewer-css-mode)
+(add-hook 'html-mode-hook 'skewer-html-mode)
+
+(setq ac-js2-evaluate-calls t)
+
+;; add the ztree
+(require 'ztree)
+
+;; add the anzu-mode require
+(global-anzu-mode +1)
+(global-set-key (kbd "M-%") 'anzu-query-replace)
+(global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+
+
+;; enable the flaycheck mode
+(global-flycheck-mode)
+
+;; config the emmet mode
+(require 'emmet-mode)
+
+
+;; require the config
+(require 'helm-swoop)
+
+;; Change the keybinds to whatever you like :)
+(global-set-key (kbd "M-i") 'helm-swoop)
+(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+(global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+
+
+
+;; enbale the indeng duide
+(require 'indent-guide)
+(indent-guide-global-mode)
+
+(load-theme 'spacemacs-dark)
+
+; add the support for the emacs powerline
+;(require 'cl);
+;(add-to-list 'load-path "~/.emacs.d/vendor/emacs-powerline")
+;(require 'powerline)
+(load-file "c:/users/q00354346/.emacs.d/vender/emacs-powerline/powerline.el")
+(setq powerline-arrow-shape 'arrow)   ;; give your mode-line curves
+(custom-set-faces
+ '(mode-line ((t (:foreground "#030303" :background "#9370DB" :box nil))))
+ '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#339966" :box nil)))))
+
