@@ -54,10 +54,11 @@
 ;; set the default font
 (set-default-font "Consolas-12")
 
-(set-fontset-font "fontset-default"  					 
-                  'gb18030' ("微软雅黑" . "unicode-bmp"))
+;(set-fontset-font "fontset-default"  					 
+;                  'gb18030' ("微软雅黑" . "unicode-bmp"))
+;                  'en_ZG' ("微软雅黑" . "unicode-bmp"))
 (setq face-font-rescale-alist '(("微软雅黑" . 1.15) ("Microsoft Yahei" . 1.2) ("WenQuanYi Zen Hei" . 1.2)))
-
+(prefer-coding-system 'utf-8)
 
 
 ;; setting of auto complete
@@ -103,8 +104,8 @@
 (global-syntax-subword-mode 1)
 
 ;; load the yasnippet
-(add-to-list 'load-path
-              "~/.emacs.d/plugins/yasnippet")
+;(add-to-list 'load-path
+;              "~/.emacs.d/plugins/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
 
@@ -327,3 +328,10 @@
 
 ;; disable the menu bar
 (menu-bar-mode -1);
+
+;; config my personal shell
+(defun cygwin-shell ()
+  "Run cygwin bash in shell mode."
+  (interactive)
+  (let ((explicit-shell-file-name "C:/Users/q00354346/.babun/cygwin/bin/bash.exe"))
+    (call-interactively 'shell)))
