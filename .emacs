@@ -324,3 +324,6 @@
  '(mode-line ((t (:foreground "#030303" :background "#9370DB" :box nil))))
  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#339966" :box nil)))))
 
+
+;; disable the menu bar
+(menu-bar-mode -1);
